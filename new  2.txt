@@ -1,0 +1,25 @@
+Here are some important thoughts I have since reading your survey. Try to understand every details of my description. If anything vague, ask me.
+
+1. One possible formula:
+
+using s12: we are already doing this by learning parameters in our model. , even better we learn everything in backprop, principled way!
+
+High cost but ultimate method:
+Measure influence of removing a case. 
+The algorithm would be similar to algorithm in S12:
+Measure current loss,
+tentatively remove a case,
+Measure new loss,
+The difference is the influence.
+We will choose the best influence to remove cases. This may be no damage to performance, or minimal damage to performance with good case base reduction.
+This is similar to your description here: "For NN-kNN, a corresponding removal comparison would keep the chosen model checkpoint fixed, remove the case, recompute retrieval and normalized activations, and run reuse again. When adaptation is enabled, evaluate the final adapted outputs in both conditions."
+note, if possible, retraining can be enabled, that could potentially condense the case base further, but surely it is going to cost more computations for retraining.
+
+2.In our current formula of maintenance score, Qi and Bi are kind of overlapping. A good Qi likely correlates with a good Bi. So doing Qi* Bi with some weights in their exponent is probably not wise. But I do like the idea of Ci and Hi, or Qi, seperate from Bi. We can see a lot of papers are doing similar things, and ours is more
+
+3. The current design, no matter using Qi or Bi, is more about the competence/usefulness of the cases in the full nn-knn cycle. It is also related to coverage. A good coverage case will be retrieved often and trained well, with high bias. However, our current design does not account for necessity/redundancy. 
+
+4. One possible formula, is to do s4, the coverage to reachability ratio, we can do so by defining "solve()", and then we can define "reach()" and "cover()" accordingly, then we can calculate the ratio as score for all cases.
+
+5.
+
